@@ -5,6 +5,7 @@
   "private": true,
   "dependencies": {
     "@googlemaps/polyline-codec": "^1.0.28",
+    "cors": "^2.8.5",
     "dotenv": "^16.6.1",
     "express": "4.19.2"
   }

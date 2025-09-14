@@ -1,15 +1,26 @@
 // server/index.js (ESM)
 import 'dotenv/config';
 import express from 'express';
+import cors from 'cors';
 import { RouteSampler } from './RouteSampler.js';
 
 const app = express();
+
+app.use(cors({
+  origin: '*', // Allow all origins (for development)
+  methods: ['GET', 'POST', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
+
 app.use(express.json());
 
 const sampler = new RouteSampler(process.env.GOOGLE_MAPS_API_KEY);
 
 // POST /sampleRoute  { origin:{lat,lng}, destination:{lat,lng}, intervalMeters?:number }
 // Returns: { points: [ {lat, lng}, ... ] }  // relative-to-origin in DEGREES (your current sampler)
+app.options('*', cors());
+
+// Your existing route
 app.post('/sampleRoute', async (req, res) => {
   try {
     const { origin, destination, intervalMeters = 5 } = req.body || {};

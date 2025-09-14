@@ -27,21 +27,23 @@
   CurrentVisibility: Editable
   MaxVisibility: Editable
   ScriptInputsHidden:
-    arrivalThresholdCm: false
-    arrowPrefab: false
-    arrowScale: false
+    ballScale: false
+    blueBallPrefab: false
     cameraObject: false
-    maxVisibleArrows: false
+    locationTracker: false
+    redBallPrefab: false
+    serverUrl: false
   ScriptTypesHidden:
     {}
   ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
   DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
   DefaultScriptInputs:
-    - arrowPrefab: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
+    - blueBallPrefab: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
+      redBallPrefab: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
       cameraObject: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
-      arrivalThresholdCm: !<float> 100.000000
-      arrowScale: !<float> 1.000000
-      maxVisibleArrows: 10
+      ballScale: !<float> 1.000000
+      serverUrl: ""
+      locationTracker: !<reference.DeviceLocationTrackingComponent> 00000000-0000-0000-0000-000000000000
   ScriptTypes:
     -
       {}

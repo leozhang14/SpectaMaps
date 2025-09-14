@@ -29,7 +29,7 @@ metaInfo:
     []
   lensName: Specs Starter
   lensDescriptors:
-    []
+    - EXPERIMENTAL_API
   lensApplicability:
     - Front
     - Back

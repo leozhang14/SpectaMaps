@@ -1,0 +1,16 @@
+- !<AssetImportMetadata/0a53591a-4c3b-401a-9637-6a8742121855>
+  ImportedAssetIds:
+    DeviceTrackingModule: !<reference> 91f6fd52-bfdc-4573-8ecc-1bbc61186663
+  ImporterName: DeviceTrackingModuleImporter
+  PrimaryAsset: !<reference> 91f6fd52-bfdc-4573-8ecc-1bbc61186663
+  PackageType: NotAPackage
+  PackagePolicy: CannotBeUnpacked
+  ExtraData:
+    {}
+  AssetDataMap:
+    {}
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
