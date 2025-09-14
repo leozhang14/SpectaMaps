@@ -410,9 +410,9 @@
     Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
     HasSegmentScaleCompensation: false
   Children:
-    []
+    - !<own> 7b89913c-e2dc-494a-a57c-e72dfea9a957
   Components:
-    - !<own> a4c869ad-4842-4310-9ce0-cbc164b86550
+    - !<own> af8cf01a-2e42-400f-9e81-7bf4ca75ca2f
 - !<SceneObject/1fbad860-d2cc-4f57-a307-5ac38abfa448>
   PrefabRemaps:
     []
@@ -1573,6 +1573,37 @@
     []
   Components:
     - !<own> c2191ee8-4045-46cf-8a8c-a52f77f9f735
+- !<ScriptComponent/7a67b967-3920-4ac7-8597-69f55b83f206>
+  PrefabRemaps:
+    []
+  Name: ArrowMaker
+  Enabled: true
+  ScriptAsset: !<reference> b8bec011-a867-49ab-bb10-2088fe32a15c
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      {}
+  ScriptTypes:
+    "":
+      {}
+- !<SceneObject/7b89913c-e2dc-494a-a57c-e72dfea9a957>
+  PrefabRemaps:
+    []
+  Name: ArrowMaker
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 7a67b967-3920-4ac7-8597-69f55b83f206
 - !<SceneObject/7b9d067f-414a-4620-a6b1-b0824953478c>
   PrefabRemaps:
     []
@@ -1892,27 +1923,6 @@
     - !<own> 6592fd98-8ae7-43b2-9e0d-b63edeaac767
   Components:
     []
-- !<ScriptComponent/a4c869ad-4842-4310-9ce0-cbc164b86550>
-  PrefabRemaps:
-    []
-  Name: Untitled JavaScript
-  Enabled: true
-  ScriptAsset: !<reference> a334f847-6d57-46e2-8d2a-af3e07ffb018
-  ScriptInputsDefault:
-    wsUrl: true
-    arrowScale: true
-    reuseSingleArrow: true
-  ScriptTypesDefault:
-    {}
-  ScriptInputs:
-    "":
-      wsUrl: "ws://192.168.0.100:8080"
-      arrowPrefab: !<reference.SceneObject> ebd037dd-c122-48d3-b597-56638b985142
-      arrowScale: !<float> 1.000000
-      reuseSingleArrow: true
-  ScriptTypes:
-    "":
-      {}
 - !<SceneObject/a702aad2-e621-42d4-afd6-3946f6425bb8>
   PrefabRemaps:
     []
@@ -1989,6 +1999,25 @@
     - !<own> 9c6bdaf8-6f75-4c15-8f87-51a47efb49e9
   Components:
     []
+- !<ScriptComponent/af8cf01a-2e42-400f-9e81-7bf4ca75ca2f>
+  PrefabRemaps:
+    []
+  Name: ArrowMaker
+  Enabled: true
+  ScriptAsset: !<reference> e8059ba9-686f-408d-970c-55594dde141e
+  ScriptInputsDefault:
+    arrivalThresholdCm: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      arrowPrefab: !<reference.ObjectPrefab> af67d8fe-8295-46fc-9f0e-ea49df41bb4f
+      cameraObject: !<reference.SceneObject> 00000000-0000-0065-0000-000000000064
+      arrivalThresholdCm: !<float> 100.000000
+      arrowScale: !<float> 10.000000
+  ScriptTypes:
+    "":
+      {}
 - !<SceneObject/b1f8254d-7ff0-4786-bdb0-5811371eac87>
   PrefabRemaps:
     []
