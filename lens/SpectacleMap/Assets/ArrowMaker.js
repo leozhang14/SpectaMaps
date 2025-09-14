@@ -7,8 +7,8 @@
 
 // Generate 100 coordinates (for testing)
 var coordinates = [];
-for (var i = 0; i < 20; i++) {
-    coordinates.push(new vec3(0, 0, -500 * (i + 1))); // each arrow 5m further away
+for (var i = 0; i < 100; i++) {
+    coordinates.push(new vec3(0, -100, -500 * (i + 1))); // each arrow 5m further away
 }
 
 var currentIndex = 0;             // next arrow index to replace

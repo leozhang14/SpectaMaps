@@ -2006,15 +2006,14 @@
   Enabled: true
   ScriptAsset: !<reference> e8059ba9-686f-408d-970c-55594dde141e
   ScriptInputsDefault:
-    arrivalThresholdCm: true
     maxVisibleArrows: true
   ScriptTypesDefault:
     {}
   ScriptInputs:
     "":
-      arrowPrefab: !<reference.ObjectPrefab> af67d8fe-8295-46fc-9f0e-ea49df41bb4f
+      arrowPrefab: !<reference.ObjectPrefab> a6ca66b5-dd42-42e6-8542-166008d4580f
       cameraObject: !<reference.SceneObject> 00000000-0000-0065-0000-000000000064
-      arrivalThresholdCm: !<float> 100.000000
+      arrivalThresholdCm: !<float> 200.000000
       arrowScale: !<float> 10.000000
       maxVisibleArrows: 10
   ScriptTypes:
@@ -2737,7 +2736,7 @@
   Enabled: true
   Layers: 1
   LocalTransform: !<TransformEntity>
-    Position: {x: 0.000000, y: -30.000000, z: -300.000000}
+    Position: {x: 0.000000, y: -30.000000, z: 0.000000}
     Rotation: {x: 0.000000, y: 90.000000, z: 0.000000}
     Scale: {x: 20.000000, y: 20.000000, z: 20.000000}
     HasSegmentScaleCompensation: false
