@@ -13,11 +13,8 @@ export class RouteSampler {
 
   /**
    * Fetch a walking route and return points every `intervalMeters` along it,
-   * expressed RELATIVE TO ORIGIN (simple lat/lng deltas in degrees).
-   * @param {{lat:number,lng:number}} origin
-   * @param {{lat:number,lng:number}} destination
-   * @param {number} intervalMeters
-   * @returns {Promise<Array<{lat:number,lng:number}>>} // deltas in degrees
+   * expressed as PLANAR coordinates (meters) RELATIVE TO ORIGIN.
+   * Output shape: Array<{ x:number, y:number }> with [0] = {0,0}.
    */
   async sampleRoute(origin, destination, intervalMeters = 5) {
     const body = {
@@ -31,7 +28,7 @@ export class RouteSampler {
     const headers = {
       'Content-Type': 'application/json',
       'X-Goog-Api-Key': this.apiKey,
-      'X-Goog-FieldMask': 'routes.polyline.encodedPolyline' // required by Routes v2
+      'X-Goog-FieldMask': 'routes.polyline.encodedPolyline'
     };
 
     const resp = await fetch(this.routesURL, { method: 'POST', headers, body: JSON.stringify(body) });
@@ -41,79 +38,74 @@ export class RouteSampler {
     const encoded = data?.routes?.[0]?.polyline?.encodedPolyline;
     if (!encoded) return [];
 
+    // Decode to absolute lat/lng points
     const absPoints = decodePolyline(encoded, 5).map(([lat, lng]) => ({ lat, lng }));
-    const resampledAbs = resampleEveryMeters(absPoints, intervalMeters);
-    const rel = resampledAbs.map(p => ({
-      lat: p.lat - origin.lat,
-      lng: p.lng - origin.lng
-    }));
 
-    // If you prefer meters instead of degree deltas, convert like this:
-    // const lat0 = origin.lat * Math.PI / 180;
-    // const relMeters = resampledAbs.map(p => ({
-    //   x: (p.lng - origin.lng) * Math.cos(lat0) * 111320, // meters east
-    //   y: (p.lat - origin.lat) * 111320                   // meters north
-    // }));
+    // Resample at fixed planar distances (uses local flat metric)
+    const resampledAbs = resampleEveryMetersPlanar(absPoints, intervalMeters);
 
-    return rel;
+    // Convert to planar meters relative to origin (east/north)
+    const lat0 = origin.lat * Math.PI / 180;
+    const toMetersFromOrigin = (p) => ({
+      x: (p.lng - origin.lng) * Math.cos(lat0) * 111320, // east
+      y: (p.lat - origin.lat) * 111320                   // north
+    });
+
+    const planar = resampledAbs.map(toMetersFromOrigin);
+
+    // Ensure first point is exactly zeroed (kill any sub-mm noise)
+    if (planar.length) {
+      const o = planar[0];
+      if (o.x !== 0 || o.y !== 0) {
+        for (let i = 0; i < planar.length; i++) {
+          planar[i] = { x: planar[i].x - o.x, y: planar[i].y - o.y };
+        }
+      }
+    }
+    return planar;
   }
 }
 
 /* ---------------- helpers ---------------- */
 
-function haversineMeters(a, b) {
-  const R = 6371000;
-  const toRad = (x) => (x * Math.PI) / 180;
-  const φ1 = toRad(a.lat), φ2 = toRad(b.lat);
-  const Δφ = toRad(b.lat - a.lat);
-  const Δλ = toRad(b.lng - a.lng);
-  const s = Math.sin(Δφ/2)**2 + Math.cos(φ1)*Math.cos(φ2)*Math.sin(Δλ/2)**2;
-  return 2 * R * Math.asin(Math.min(1, Math.sqrt(s)));
-}
-
-function interpolateGC(a, b, f) {
-  const toRad = (x) => (x * Math.PI) / 180;
-  const toDeg = (x) => (x * 180) / Math.PI;
-  const φ1 = toRad(a.lat), λ1 = toRad(a.lng);
-  const φ2 = toRad(b.lat), λ2 = toRad(b.lng);
-  const Δ = 2 * Math.asin(Math.sqrt(
-    Math.sin((φ2 - φ1)/2)**2 + Math.cos(φ1)*Math.cos(φ2)*Math.sin((λ2 - λ1)/2)**2
-  ));
-  if (Δ === 0) return { lat: a.lat, lng: a.lng };
-
-  const A = Math.sin((1 - f) * Δ) / Math.sin(Δ);
-  const B = Math.sin(f * Δ) / Math.sin(Δ);
-
-  const x = A * Math.cos(φ1) * Math.cos(λ1) + B * Math.cos(φ2) * Math.cos(λ2);
-  const y = A * Math.cos(φ1) * Math.sin(λ1) + B * Math.cos(φ2) * Math.sin(λ2);
-  const z = A * Math.sin(φ1) + B * Math.sin(φ2);
-
-  const φ = Math.atan2(z, Math.sqrt(x*x + y*y));
-  const λ = Math.atan2(y, x);
-  return { lat: toDeg(φ), lng: toDeg(λ) };
-}
-
-function resampleEveryMeters(poly, stepMeters) {
+/**
+ * Resample polyline at fixed stepMeters using a planar metric:
+ * distances measured in meters in a local flat projection (east/north),
+ * linear interpolation in lat/lng space (adequate for small steps).
+ */
+function resampleEveryMetersPlanar(poly, stepMeters) {
   if (!poly?.length) return [];
   if (poly.length === 1) return [poly[0]];
 
   const out = [poly[0]];
-  let total = 0;
-  let nextDist = 0;
+  let accumulated = 0;
+  let nextTarget = stepMeters;
+
+  // Helper to get planar distance between two lat/lng points near mid-lat
+  const planarDist = (a, b) => {
+    const lat0 = ((a.lat + b.lat) / 2) * Math.PI / 180;
+    const dx = (b.lng - a.lng) * Math.cos(lat0) * 111320;
+    const dy = (b.lat - a.lat) * 111320;
+    return Math.hypot(dx, dy);
+  };
 
   for (let i = 0; i < poly.length - 1; i++) {
     const a = poly[i], b = poly[i+1];
-    const segLen = haversineMeters(a, b);
+    const segLen = planarDist(a, b);
     if (segLen === 0) continue;
 
-    while (nextDist + stepMeters <= total + segLen) {
-      nextDist += stepMeters;
-      const f = (nextDist - total) / segLen;
-      out.push(interpolateGC(a, b, f));
+    while (nextTarget <= accumulated + segLen) {
+      const f = (nextTarget - accumulated) / segLen;
+      out.push({
+        lat: a.lat + (b.lat - a.lat) * f,
+        lng: a.lng + (b.lng - a.lng) * f
+      });
+      nextTarget += stepMeters;
     }
-    total += segLen;
+    accumulated += segLen;
   }
 
+  // Ensure the final vertex is included
   const last = poly[poly.length - 1];
   const lastOut = out[out.length - 1];
   if (!lastOut || lastOut.lat !== last.lat || lastOut.lng !== last.lng) out.push(last);

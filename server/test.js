@@ -9,65 +9,48 @@ if (!API_KEY) {
 
 const sampler = new RouteSampler(API_KEY);
 
-const origin = { lat: 37.7937, lng: -122.3965 };
-const dest   = { lat: 37.7952, lng: -122.3937 };
+// Hardcoded origin & destination
+const origin = { lat: 43.472401457564594, lng: -80.53597907446802 };
+const dest   = { lat: 43.47299896633174, lng: -80.53728163622365 };
 
-function bearingDegrees(p1, p2) {
-  // Calculate bearing in degrees from p1 → p2
-  const toRad = (x) => (x * Math.PI) / 180;
-  const toDeg = (x) => (x * 180) / Math.PI;
-
-  const φ1 = toRad(p1.lat);
-  const φ2 = toRad(p2.lat);
-  const Δλ = toRad(p2.lng - p1.lng);
-
-  const y = Math.sin(Δλ) * Math.cos(φ2);
-  const x =
-    Math.cos(φ1) * Math.sin(φ2) -
-    Math.sin(φ1) * Math.cos(φ2) * Math.cos(Δλ);
-
-  const θ = Math.atan2(y, x);
-  return (toDeg(θ) + 360) % 360; // normalize 0–360
+// Compass: 0°=North (+Y), 90°=East (+X)
+function planarBearingDeg(dx, dy) {
+  return (Math.atan2(dx, dy) * 180 / Math.PI + 360) % 360;
 }
 
-const ptsAbs = await sampler.sampleRoute(origin, dest, 5);
-
-// Convert relative to meters
-const lat0 = origin.lat * Math.PI / 180;
-const ptsMeters = ptsAbs.map(p => ({
-  x: (p.lng) * Math.cos(lat0) * 111320,
-  y: (p.lat) * 111320
-}));
-
-// Compute initial direction using the very first meter
-// Take origin and interpolate 1m along first step
-const first = ptsAbs[0];
-const second = ptsAbs[1];
-
-// Haversine distance first->second
-function haversineMeters(a, b) {
-  const R = 6371000;
-  const toRad = (x) => (x * Math.PI) / 180;
-  const φ1 = toRad(a.lat), φ2 = toRad(b.lat);
-  const Δφ = toRad(b.lat - a.lat);
-  const Δλ = toRad(b.lng - a.lng);
-  const s = Math.sin(Δφ/2)**2 + Math.cos(φ1)*Math.cos(φ2)*Math.sin(Δλ/2)**2;
-  return 2 * R * Math.asin(Math.min(1, Math.sqrt(s)));
+const ptsPlanar = await sampler.sampleRoute(origin, dest, 5);
+if (ptsPlanar.length < 2) {
+  console.log("Not enough points.");
+  process.exit(0);
 }
 
-// Fraction along first segment that corresponds to 1 meter
-const dist = haversineMeters(first, second);
-const f = Math.min(1, 1 / dist); // fraction of 1m along segment
+// Direction from origin → first step
+const dx = ptsPlanar[1].x - ptsPlanar[0].x;
+const dy = ptsPlanar[1].y - ptsPlanar[0].y;
+const directionDeg = planarBearingDeg(dx, dy);
 
-// Linear interpolate in lat/lng
-const interp = {
-  lat: first.lat + (second.lat - first.lat) * f,
-  lng: first.lng + (second.lng - first.lng) * f
-};
+// Rotation so first step = (0, d)
+const theta = Math.atan2(dx, dy);
+let ptsFacing = ptsPlanar.map(({ x, y }) => {
+  const xr =  x * Math.cos(theta) - y * Math.sin(theta);
+  const yr =  x * Math.sin(theta) + y * Math.cos(theta);
+  return { x: xr, y: yr };
+});
 
-const direction = bearingDegrees(origin, interp);
+// Force exact origin (0,0)
+const o = ptsFacing[0];
+ptsFacing = ptsFacing.map(({ x, y }) => ({ x: x - o.x, y: y - o.y }));
 
-// Prepend direction as first element
-const result = [{ direction }, ...ptsMeters.slice(0, 10)];
+// Round to cm
+const round2 = (v) => Math.round(v * 100) / 100;
+const ptsFacingRounded = ptsFacing.map(({ x, y }) => ({ x: round2(x), y: round2(y) }));
 
-console.log(result);
+// Absolute end coordinates
+const endCoords = { lat: dest.lat, lng: dest.lng };
+
+// Final JSON output
+console.log({
+  direction: Math.round(directionDeg * 100) / 100,
+  end: endCoords,
+  coords: ptsFacingRounded
+});
