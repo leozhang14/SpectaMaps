@@ -1,0 +1,63 @@
+- !<AssetImportMetadata/17d56464-a8ec-4570-b58a-dde434148cd7>
+  ImportedAssetIds:
+    ObjectPrefab: !<reference> a6ca66b5-dd42-42e6-8542-166008d4580f
+  ImporterName: ObjectPrefabImporter
+  PrimaryAsset: !<reference> a6ca66b5-dd42-42e6-8542-166008d4580f
+  PackageType: NotAPackage
+  PackagePolicy: CannotBeUnpacked
+  ExtraData:
+    {}
+  AssetDataMap:
+    ObjectPrefab: !<own> 23180d36-ad37-4952-ac7b-f703168ef5af
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<ObjectPrefabAssetData/23180d36-ad37-4952-ac7b-f703168ef5af>
+  SourceRemaps:
+    - 2568538a-9bf2-4e4a-a86e-bb205b907eb5: df756eae-d929-4887-ab35-697e9f79fbc3
+    - a6ca66b5-dd42-42e6-8542-166008d4580f: 388210cf-e6d1-4922-b734-51a63ed92dfd
+    - e1bebb41-686e-42ad-b20c-705bcea6a8a4: c9febc49-e760-40e1-9fb4-7801577e4d09
+  SourceState: !<own> 388210cf-e6d1-4922-b734-51a63ed92dfd
+- !<ObjectPrefab/388210cf-e6d1-4922-b734-51a63ed92dfd>
+  PackagePath: ""
+  objects:
+    - !<own> c9febc49-e760-40e1-9fb4-7801577e4d09
+  LazyLoading: false
+  RetainAssets: true
+- !<SceneObject/c9febc49-e760-40e1-9fb4-7801577e4d09>
+  PrefabRemaps:
+    []
+  Name: Sphere
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 10.000000, y: 10.000000, z: 10.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> df756eae-d929-4887-ab35-697e9f79fbc3
+- !<RenderMeshVisual/df756eae-d929-4887-ab35-697e9f79fbc3>
+  PrefabRemaps:
+    []
+  Name: Render Mesh Visual
+  Enabled: true
+  RenderOrder: 0
+  StretchMode: Stretch
+  VerticalAlignment: Center
+  HorizontalAlignment: Center
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Materials:
+    - !<reference> f2eac29d-c971-467f-bf6f-9ad8f7c5601d
+  Mesh: !<reference> 8bf77adf-6549-4a67-9410-e10a601ff0e2
+  Skin: !<reference> 00000000-0000-0000-0000-000000000000
+  BlendShapesEnabled: true
+  BlendNormals: false
+  BlendShapes:
+    {}

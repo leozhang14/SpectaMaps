@@ -5,6 +5,8 @@
     - !<own> 0005641c-028d-459a-0000-000000014b4d
     - !<own> 5aa0f98b-e799-448c-a2dc-cae5d04fa2a4
     - !<own> ebd037dd-c122-48d3-b597-56638b985142
+    - !<own> 1f6791a1-4cd7-4d78-b453-c9f7d236294d
+    - !<own> 9f9bb7a6-4adc-4786-b93c-487a7771435e
   layers: !<Layers/267ee9a7-aff2-4f9d-9a49-f71214747d03>
     userLayers:
       []
@@ -397,6 +399,21 @@
     - !<own> 298f274e-575f-40f7-a4f3-e4eaeaaecd67
   Components:
     []
+- !<SceneObject/1f6791a1-4cd7-4d78-b453-c9f7d236294d>
+  PrefabRemaps:
+    []
+  Name: Object 0
+  Enabled: false
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> 7b89913c-e2dc-494a-a57c-e72dfea9a957
+  Components:
+    - !<own> af8cf01a-2e42-400f-9e81-7bf4ca75ca2f
 - !<SceneObject/1fbad860-d2cc-4f57-a307-5ac38abfa448>
   PrefabRemaps:
     []
@@ -1557,6 +1574,37 @@
     []
   Components:
     - !<own> c2191ee8-4045-46cf-8a8c-a52f77f9f735
+- !<ScriptComponent/7a67b967-3920-4ac7-8597-69f55b83f206>
+  PrefabRemaps:
+    []
+  Name: ArrowMaker
+  Enabled: true
+  ScriptAsset: !<reference> b8bec011-a867-49ab-bb10-2088fe32a15c
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      {}
+  ScriptTypes:
+    "":
+      {}
+- !<SceneObject/7b89913c-e2dc-494a-a57c-e72dfea9a957>
+  PrefabRemaps:
+    []
+  Name: ArrowMaker
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 7a67b967-3920-4ac7-8597-69f55b83f206
 - !<SceneObject/7b9d067f-414a-4620-a6b1-b0824953478c>
   PrefabRemaps:
     []
@@ -1861,6 +1909,21 @@
     - !<own> f0e33766-c981-4f7a-b17b-a50e70c8b6bc
   Components:
     []
+- !<SceneObject/9f9bb7a6-4adc-4786-b93c-487a7771435e>
+  PrefabRemaps:
+    []
+  Name: Object 1
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> a75b0830-37a7-41fa-b620-9a73693237e3
 - !<SceneObject/a4be667c-356e-4cf4-81ef-21e3e55cb1c2>
   PrefabRemaps:
     []
@@ -1891,6 +1954,30 @@
     []
   Components:
     - !<own> 329940fb-34dd-413d-8f14-ed6fa1f135b5
+- !<ScriptComponent/a75b0830-37a7-41fa-b620-9a73693237e3>
+  PrefabRemaps:
+    []
+  Name: Untitled TypeScript
+  Enabled: true
+  ScriptAsset: !<reference> e9087687-52f8-4923-8f3f-2b23983febc0
+  ScriptInputsDefault:
+    destinationLatitude: true
+    destinationLongitude: true
+    updateIntervalSeconds: true
+    arrivalThresholdMeters: true
+    enableDebugOutput: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      destinationLatitude: 43.472000
+      destinationLongitude: -80.544899
+      updateIntervalSeconds: !<float> 1.000000
+      arrivalThresholdMeters: !<float> 10.000000
+      enableDebugOutput: true
+  ScriptTypes:
+    "":
+      {}
 - !<ScriptComponent/ab22849e-ac61-44f6-a05a-705b1b8d329f>
   PrefabRemaps:
     []
@@ -1952,6 +2039,26 @@
     - !<own> 9c6bdaf8-6f75-4c15-8f87-51a47efb49e9
   Components:
     []
+- !<ScriptComponent/af8cf01a-2e42-400f-9e81-7bf4ca75ca2f>
+  PrefabRemaps:
+    []
+  Name: ArrowMaker
+  Enabled: true
+  ScriptAsset: !<reference> e8059ba9-686f-408d-970c-55594dde141e
+  ScriptInputsDefault:
+    maxVisibleArrows: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      arrowPrefab: !<reference.ObjectPrefab> a6ca66b5-dd42-42e6-8542-166008d4580f
+      cameraObject: !<reference.SceneObject> 00000000-0000-0065-0000-000000000064
+      arrivalThresholdCm: !<float> 200.000000
+      arrowScale: !<float> 10.000000
+      maxVisibleArrows: 10
+  ScriptTypes:
+    "":
+      {}
 - !<SceneObject/b1f8254d-7ff0-4786-bdb0-5811371eac87>
   PrefabRemaps:
     []
@@ -2669,7 +2776,7 @@
   Enabled: true
   Layers: 1
   LocalTransform: !<TransformEntity>
-    Position: {x: 0.000000, y: -30.000000, z: -300.000000}
+    Position: {x: 0.000000, y: -30.000000, z: 0.000000}
     Rotation: {x: 0.000000, y: 90.000000, z: 0.000000}
     Scale: {x: 20.000000, y: 20.000000, z: 20.000000}
     HasSegmentScaleCompensation: false

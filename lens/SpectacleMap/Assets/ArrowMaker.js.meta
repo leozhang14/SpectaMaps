@@ -1,0 +1,47 @@
+- !<AssetImportMetadata/77d27173-9afd-47da-8ccb-81f503c9eb99>
+  ImportedAssetIds:
+    JavaScriptAsset: !<reference> e8059ba9-686f-408d-970c-55594dde141e
+  ImporterName: JavaScriptAssetImporter
+  PrimaryAsset: !<reference> e8059ba9-686f-408d-970c-55594dde141e
+  PackageType: NotAPackage
+  PackagePolicy: CannotBeUnpacked
+  ExtraData:
+    {}
+  AssetDataMap:
+    JavaScriptAsset: !<own> b352f345-405f-46db-b655-d69ee0fbb2f6
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<ScriptAssetData/b352f345-405f-46db-b655-d69ee0fbb2f6>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: f4a50192-ac51-478e-8249-2ab75ec9cad5
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  CurrentVisibility: Editable
+  MaxVisibility: Editable
+  ScriptInputsHidden:
+    arrivalThresholdCm: false
+    arrowPrefab: false
+    arrowScale: false
+    cameraObject: false
+    maxVisibleArrows: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  DefaultScriptInputs:
+    - arrowPrefab: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
+      cameraObject: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      arrivalThresholdCm: !<float> 100.000000
+      arrowScale: !<float> 1.000000
+      maxVisibleArrows: 10
+  ScriptTypes:
+    -
+      {}
