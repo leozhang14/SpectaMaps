@@ -1,8 +1,8 @@
-- !<AssetImportMetadata/d15a9c4d-fa40-49b5-b806-ac0d4e2f6096>
+- !<AssetImportMetadata/e55b5142-e89b-416c-9290-5cd49af03718>
   ImportedAssetIds:
-    Texture: !<reference> 996c6f4e-b2ad-4117-9e3e-3db82e6e97f5
-  ImporterName: DeviceCameraTextureImporter
-  PrimaryAsset: !<reference> 996c6f4e-b2ad-4117-9e3e-3db82e6e97f5
+    RenderTarget: !<reference> 923415f5-4245-4675-ade1-6d69d6d23e71
+  ImporterName: RenderTargetImporter
+  PrimaryAsset: !<reference> 923415f5-4245-4675-ade1-6d69d6d23e71
   PackageType: NotAPackage
   PackagePolicy: CannotBeUnpacked
   ExtraData:
