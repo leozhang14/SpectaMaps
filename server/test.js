@@ -10,8 +10,8 @@ if (!API_KEY) {
 const sampler = new RouteSampler(API_KEY);
 
 // Hardcoded origin & destination
-const origin = { lat: 43.472401457564594, lng: -80.53597907446802 };
-const dest   = { lat: 43.47299896633174, lng: -80.53728163622365 };
+const origin = { lat: 43.47326929451526, lng: -80.5369396475174 };
+const dest   = { lat: 43.47335985377343, lng: -80.54014746779931 };
 
 // Compass: 0°=North (+Y), 90°=East (+X)
 function planarBearingDeg(dx, dy) {
