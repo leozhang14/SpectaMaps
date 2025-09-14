@@ -6,6 +6,7 @@
     - !<own> 5aa0f98b-e799-448c-a2dc-cae5d04fa2a4
     - !<own> ebd037dd-c122-48d3-b597-56638b985142
     - !<own> 1f6791a1-4cd7-4d78-b453-c9f7d236294d
+    - !<own> 9f9bb7a6-4adc-4786-b93c-487a7771435e
   layers: !<Layers/267ee9a7-aff2-4f9d-9a49-f71214747d03>
     userLayers:
       []
@@ -402,7 +403,7 @@
   PrefabRemaps:
     []
   Name: Object 0
-  Enabled: true
+  Enabled: false
   Layers: 1
   LocalTransform: !<TransformEntity>
     Position: {x: 0.000000, y: 0.000000, z: 0.000000}
@@ -1908,6 +1909,21 @@
     - !<own> f0e33766-c981-4f7a-b17b-a50e70c8b6bc
   Components:
     []
+- !<SceneObject/9f9bb7a6-4adc-4786-b93c-487a7771435e>
+  PrefabRemaps:
+    []
+  Name: Object 1
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> a75b0830-37a7-41fa-b620-9a73693237e3
 - !<SceneObject/a4be667c-356e-4cf4-81ef-21e3e55cb1c2>
   PrefabRemaps:
     []
@@ -1938,6 +1954,30 @@
     []
   Components:
     - !<own> 329940fb-34dd-413d-8f14-ed6fa1f135b5
+- !<ScriptComponent/a75b0830-37a7-41fa-b620-9a73693237e3>
+  PrefabRemaps:
+    []
+  Name: Untitled TypeScript
+  Enabled: true
+  ScriptAsset: !<reference> e9087687-52f8-4923-8f3f-2b23983febc0
+  ScriptInputsDefault:
+    destinationLatitude: true
+    destinationLongitude: true
+    updateIntervalSeconds: true
+    arrivalThresholdMeters: true
+    enableDebugOutput: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      destinationLatitude: 43.472000
+      destinationLongitude: -80.544899
+      updateIntervalSeconds: !<float> 1.000000
+      arrivalThresholdMeters: !<float> 10.000000
+      enableDebugOutput: true
+  ScriptTypes:
+    "":
+      {}
 - !<ScriptComponent/ab22849e-ac61-44f6-a05a-705b1b8d329f>
   PrefabRemaps:
     []
