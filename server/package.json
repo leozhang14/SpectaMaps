@@ -4,8 +4,8 @@
   "type": "module",
   "private": true,
   "dependencies": {
-    "@googlemaps/polyline-codec": "1.0.28",
-    "dotenv": "16.4.5",
+    "@googlemaps/polyline-codec": "^1.0.28",
+    "dotenv": "^16.6.1",
     "express": "4.19.2"
   }
 }
