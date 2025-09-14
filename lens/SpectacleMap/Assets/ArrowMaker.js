@@ -1,77 +1,78 @@
 // ArrowManager.js
 // @input Asset.ObjectPrefab arrowPrefab
 // @input SceneObject cameraObject
-// @input float arrivalThresholdCm = 100.0   // 1m = 100 cm
-// @input float arrowScale = 1.0             // custom scale multiplier
+// @input float arrivalThresholdCm = 100.0   // threshold to "reach" an arrow
+// @input float arrowScale = 1.0             // scale multiplier
+// @input int maxVisibleArrows = 10          // number of arrows shown at once
 
-var coordinates = [
-    new vec3(0, 0, -500),   // 5m ahead
-    new vec3(0, 0, -1000),
-    new vec3(0, 0, -1500),
-    new vec3(0, 0, -2000),
-    new vec3(0, 0, -2500),
-    new vec3(0, 0, -3000),
-    new vec3(0, 0, -3500),
-    new vec3(0, 0, -4000),
-    new vec3(0, 0, -4500),
-    new vec3(0, 0, -5000)   // 30m ahead
-];
+// Generate 100 coordinates (for testing)
+var coordinates = [];
+for (var i = 0; i < 20; i++) {
+    coordinates.push(new vec3(0, 0, -500 * (i + 1))); // each arrow 5m further away
+}
 
-var currentIndex = 0;
-var currentArrow = null;
+var currentIndex = 0;             // next arrow index to replace
+var activeArrows = {};            // dictionary of index → arrow SceneObject
 
-// Spawn arrow at given index
+// Spawn an arrow at coordinates[index]
 function spawnArrow(index) {
-    if (index >= coordinates.length) {
-        print("All arrows visited!");
-        return;
-    }
+    if (index >= coordinates.length) { return; }
 
-    // instantiate prefab
-    currentArrow = script.arrowPrefab.instantiate(script.getSceneObject());
-    var t = currentArrow.getTransform();
+    var arrow = script.arrowPrefab.instantiate(script.getSceneObject());
+    var t = arrow.getTransform();
 
-    // place relative to camera
     var camPos = script.cameraObject.getTransform().getWorldPosition();
-    var worldPos = camPos.add(coordinates[index]); // offset from camera
+    var worldPos = camPos.add(coordinates[index]);
     t.setWorldPosition(worldPos);
 
-    // face the camera
+    // Make arrow face the camera
     t.setWorldRotation(quat.lookAt(worldPos, camPos));
 
-    // apply custom scale
+    // Apply scale
     var s = script.arrowScale;
     t.setLocalScale(new vec3(s, s, s));
 
+    activeArrows[index] = arrow;
     print("Spawned arrow " + index + " at " + worldPos.toString());
 }
 
-// Remove arrow
-function removeArrow() {
-    if (currentArrow) {
-        currentArrow.destroy();
-        currentArrow = null;
+// Remove arrow at given index
+function removeArrow(index) {
+    if (activeArrows[index]) {
+        activeArrows[index].destroy();
+        delete activeArrows[index];
     }
 }
 
-// Called every frame
+// Initialize first batch of arrows
+for (var i = 0; i < script.maxVisibleArrows; i++) {
+    spawnArrow(i);
+}
+
+// Per-frame update
 function onUpdate(eventData) {
-    if (!currentArrow) { return; }
-
     var camPos = script.cameraObject.getTransform().getWorldPosition();
-    var arrowPos = currentArrow.getTransform().getWorldPosition();
-    var dist = camPos.distance(arrowPos);
 
-    if (dist <= script.arrivalThresholdCm) {
-        print("Arrived at arrow " + currentIndex);
-        removeArrow();
-        currentIndex++;
-        spawnArrow(currentIndex);
+    // Check each active arrow
+    var indices = Object.keys(activeArrows);
+    for (var j = 0; j < indices.length; j++) {
+        var idx = parseInt(indices[j]);
+        var arrowObj = activeArrows[idx];
+        if (!arrowObj) { continue; }
+
+        var arrowPos = arrowObj.getTransform().getWorldPosition();
+        var dist = camPos.distance(arrowPos);
+
+        // If within arrival distance, replace this arrow with one 10 steps ahead
+        if (dist <= script.arrivalThresholdCm) {
+            print("Arrived at arrow " + idx);
+            removeArrow(idx);
+
+            var newIndex = idx + script.maxVisibleArrows;
+            spawnArrow(newIndex);
+        }
     }
 }
-
-// Kick things off
-spawnArrow(currentIndex);
 
 var updateEvent = script.createEvent("UpdateEvent");
 updateEvent.bind(onUpdate);

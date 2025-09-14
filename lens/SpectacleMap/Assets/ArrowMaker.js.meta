@@ -31,6 +31,7 @@
     arrowPrefab: false
     arrowScale: false
     cameraObject: false
+    maxVisibleArrows: false
   ScriptTypesHidden:
     {}
   ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
@@ -40,6 +41,7 @@
       cameraObject: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
       arrivalThresholdCm: !<float> 100.000000
       arrowScale: !<float> 1.000000
+      maxVisibleArrows: 10
   ScriptTypes:
     -
       {}

@@ -2007,6 +2007,7 @@
   ScriptAsset: !<reference> e8059ba9-686f-408d-970c-55594dde141e
   ScriptInputsDefault:
     arrivalThresholdCm: true
+    maxVisibleArrows: true
   ScriptTypesDefault:
     {}
   ScriptInputs:
@@ -2015,6 +2016,7 @@
       cameraObject: !<reference.SceneObject> 00000000-0000-0065-0000-000000000064
       arrivalThresholdCm: !<float> 100.000000
       arrowScale: !<float> 10.000000
+      maxVisibleArrows: 10
   ScriptTypes:
     "":
       {}
