@@ -6,15 +6,15 @@
 
 var coordinates = [
     new vec3(0, 0, -500),   // 5m ahead
-    new vec3(200, 0, -500), // 2m right, 5m forward
-    new vec3(-200, 0, -800),
     new vec3(0, 0, -1000),
-    new vec3(300, 0, -1500),
-    new vec3(-300, 0, -2000),
+    new vec3(0, 0, -1500),
+    new vec3(0, 0, -2000),
     new vec3(0, 0, -2500),
-    new vec3(400, 0, -2500),
-    new vec3(-400, 0, -2500),
-    new vec3(0, 0, -3000)   // 30m ahead
+    new vec3(0, 0, -3000),
+    new vec3(0, 0, -3500),
+    new vec3(0, 0, -4000),
+    new vec3(0, 0, -4500),
+    new vec3(0, 0, -5000)   // 30m ahead
 ];
 
 var currentIndex = 0;
