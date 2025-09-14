@@ -1,0 +1,51 @@
+- !<AssetImportMetadata/7613b71d-d0a2-417b-a9ff-307a8f1bcbd4>
+  ImportedAssetIds:
+    JavaScriptAsset: !<reference> 20acd104-5231-45d5-a971-923d19f1da3b
+  ImporterName: JavaScriptAssetImporter
+  PrimaryAsset: !<reference> 20acd104-5231-45d5-a971-923d19f1da3b
+  PackageType: NotAPackage
+  PackagePolicy: CannotBeUnpacked
+  ExtraData:
+    {}
+  AssetDataMap:
+    JavaScriptAsset: !<own> 480fd96e-77c2-489e-8157-8471735d7abb
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<ScriptAssetData/480fd96e-77c2-489e-8157-8471735d7abb>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 8954bd87-0feb-45e0-a92e-e8094c2095a5
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  CurrentVisibility: Editable
+  MaxVisibility: Editable
+  ScriptInputsHidden:
+    arrivalThresholdCm: false
+    arrow: false
+    cameraObject: false
+    internetModule: false
+    pollInterval: false
+    serverBaseUrl: false
+    spawnParent: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  DefaultScriptInputs:
+    - arrow: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
+      internetModule: !<reference.InternetModule> 00000000-0000-0000-0000-000000000000
+      cameraObject: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      spawnParent: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      pollInterval: 0.500000
+      arrivalThresholdCm: !<float> 100.000000
+      serverBaseUrl: "http://192.168.1.100:5000"
+  ScriptTypes:
+    -
+      {}
