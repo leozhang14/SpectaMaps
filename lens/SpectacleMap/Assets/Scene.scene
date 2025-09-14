@@ -5,6 +5,7 @@
     - !<own> 0005641c-028d-459a-0000-000000014b4d
     - !<own> 5aa0f98b-e799-448c-a2dc-cae5d04fa2a4
     - !<own> ebd037dd-c122-48d3-b597-56638b985142
+    - !<own> 1f6791a1-4cd7-4d78-b453-c9f7d236294d
   layers: !<Layers/267ee9a7-aff2-4f9d-9a49-f71214747d03>
     userLayers:
       []
@@ -397,6 +398,21 @@
     - !<own> 298f274e-575f-40f7-a4f3-e4eaeaaecd67
   Components:
     []
+- !<SceneObject/1f6791a1-4cd7-4d78-b453-c9f7d236294d>
+  PrefabRemaps:
+    []
+  Name: Object 0
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> a4c869ad-4842-4310-9ce0-cbc164b86550
 - !<SceneObject/1fbad860-d2cc-4f57-a307-5ac38abfa448>
   PrefabRemaps:
     []
@@ -1876,6 +1892,27 @@
     - !<own> 6592fd98-8ae7-43b2-9e0d-b63edeaac767
   Components:
     []
+- !<ScriptComponent/a4c869ad-4842-4310-9ce0-cbc164b86550>
+  PrefabRemaps:
+    []
+  Name: Untitled JavaScript
+  Enabled: true
+  ScriptAsset: !<reference> a334f847-6d57-46e2-8d2a-af3e07ffb018
+  ScriptInputsDefault:
+    wsUrl: true
+    arrowScale: true
+    reuseSingleArrow: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      wsUrl: "ws://192.168.0.100:8080"
+      arrowPrefab: !<reference.SceneObject> ebd037dd-c122-48d3-b597-56638b985142
+      arrowScale: !<float> 1.000000
+      reuseSingleArrow: true
+  ScriptTypes:
+    "":
+      {}
 - !<SceneObject/a702aad2-e621-42d4-afd6-3946f6425bb8>
   PrefabRemaps:
     []

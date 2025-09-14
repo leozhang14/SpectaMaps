@@ -1,0 +1,45 @@
+- !<AssetImportMetadata/9290f63d-26bc-4ef8-8771-2c0bcba60184>
+  ImportedAssetIds:
+    JavaScriptAsset: !<reference> a334f847-6d57-46e2-8d2a-af3e07ffb018
+  ImporterName: JavaScriptAssetImporter
+  PrimaryAsset: !<reference> a334f847-6d57-46e2-8d2a-af3e07ffb018
+  PackageType: NotAPackage
+  PackagePolicy: CannotBeUnpacked
+  ExtraData:
+    {}
+  AssetDataMap:
+    JavaScriptAsset: !<own> cb72b548-6514-4c3e-9a34-3f5191046883
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<ScriptAssetData/cb72b548-6514-4c3e-9a34-3f5191046883>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: b8025d39-76d4-4021-95a4-afa1f79daecb
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  CurrentVisibility: Editable
+  MaxVisibility: Editable
+  ScriptInputsHidden:
+    arrowPrefab: false
+    arrowScale: false
+    reuseSingleArrow: false
+    wsUrl: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  DefaultScriptInputs:
+    - wsUrl: "ws://192.168.0.100:8080"
+      arrowPrefab: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      arrowScale: !<float> 1.000000
+      reuseSingleArrow: true
+  ScriptTypes:
+    -
+      {}
