@@ -1,20 +1,20 @@
-- !<AssetImportMetadata/77d27173-9afd-47da-8ccb-81f503c9eb99>
+- !<AssetImportMetadata/b1dc1ee8-5f2f-4815-95dc-1da1a6519644>
   ImportedAssetIds:
-    JavaScriptAsset: !<reference> e8059ba9-686f-408d-970c-55594dde141e
+    JavaScriptAsset: !<reference> 0fb1bd87-8902-4661-b349-ec544ca9aba1
   ImporterName: JavaScriptAssetImporter
-  PrimaryAsset: !<reference> e8059ba9-686f-408d-970c-55594dde141e
+  PrimaryAsset: !<reference> 0fb1bd87-8902-4661-b349-ec544ca9aba1
   PackageType: NotAPackage
   PackagePolicy: CannotBeUnpacked
   ExtraData:
     {}
   AssetDataMap:
-    JavaScriptAsset: !<own> b352f345-405f-46db-b655-d69ee0fbb2f6
+    JavaScriptAsset: !<own> 2c952fe6-319d-40a1-8020-02bcadc3e261
   DependentFiles:
     []
   ImporterSettings: !<AssetImporterSettings>
     {}
   CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
-- !<ScriptAssetData/b352f345-405f-46db-b655-d69ee0fbb2f6>
+- !<ScriptAssetData/2c952fe6-319d-40a1-8020-02bcadc3e261>
   SvgIcon: ""
   SetupScript:
     code: ""
@@ -22,28 +22,19 @@
   VersionMajor: 0
   VersionMinor: 0
   VersionPatch: 0
-  ComponentUid: f4a50192-ac51-478e-8249-2ab75ec9cad5
+  ComponentUid: 314f928c-67ef-460b-ad69-27d0b4b9e62f
   ExportUid: 00000000-0000-0000-0000-000000000000
   CurrentVisibility: Editable
   MaxVisibility: Editable
   ScriptInputsHidden:
-    ballScale: false
-    blueBallPrefab: false
-    cameraObject: false
-    locationTracker: false
-    redBallPrefab: false
-    serverUrl: false
+    {}
   ScriptTypesHidden:
     {}
   ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
   DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
   DefaultScriptInputs:
-    - blueBallPrefab: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
-      redBallPrefab: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
-      cameraObject: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
-      ballScale: !<float> 1.000000
-      serverUrl: ""
-      locationTracker: !<reference.DeviceLocationTrackingComponent> 00000000-0000-0000-0000-000000000000
+    -
+      {}
   ScriptTypes:
     -
       {}

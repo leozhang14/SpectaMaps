@@ -25,13 +25,18 @@ app.post('/sampleRoute', async (req, res) => {
   try {
     const { origin, destination, intervalMeters = 5 } = req.body || {};
     if (!origin || !destination) return res.status(400).json({ error: 'origin and destination required' });
+    
+    console.log('Received request:', { origin, destination, intervalMeters });
+    
     const coords = await sampler.sampleRoute(origin, destination, intervalMeters);
+    console.log('Sampler returned:', coords.slice(0, 3)); // Log first 3 coordinates
+    
     res.json(coords);
   } catch (e) {
+    console.error('Error:', e);
     res.status(500).json({ error: String(e?.message || e) });
   }
 });
-
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => console.log(`Server on http://localhost:${PORT}`));
 

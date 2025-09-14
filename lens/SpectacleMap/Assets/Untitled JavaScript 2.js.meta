@@ -1,0 +1,49 @@
+- !<AssetImportMetadata/5bd269b9-053a-4cdc-8799-2b2e447ffac3>
+  ImportedAssetIds:
+    JavaScriptAsset: !<reference> c861fcc0-293f-48e8-b7d6-2263931731d6
+  ImporterName: JavaScriptAssetImporter
+  PrimaryAsset: !<reference> c861fcc0-293f-48e8-b7d6-2263931731d6
+  PackageType: NotAPackage
+  PackagePolicy: CannotBeUnpacked
+  ExtraData:
+    {}
+  AssetDataMap:
+    JavaScriptAsset: !<own> 23047ad7-1948-4a63-bceb-5468d0b62ae6
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<ScriptAssetData/23047ad7-1948-4a63-bceb-5468d0b62ae6>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 32d0b9b4-51bb-4923-a82e-de83f192d739
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  CurrentVisibility: Editable
+  MaxVisibility: Editable
+  ScriptInputsHidden:
+    ballScale: false
+    blueBallPrefab: false
+    cameraObject: false
+    locationTracker: false
+    redBallPrefab: false
+    serverUrl: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  DefaultScriptInputs:
+    - blueBallPrefab: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
+      redBallPrefab: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
+      cameraObject: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      ballScale: !<float> 1.000000
+      serverUrl: "https://your-server.com/api"
+      locationTracker: !<reference.DeviceLocationTrackingComponent> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    -
+      {}

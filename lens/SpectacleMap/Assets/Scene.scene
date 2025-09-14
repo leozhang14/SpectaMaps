@@ -6,7 +6,6 @@
     - !<own> 5aa0f98b-e799-448c-a2dc-cae5d04fa2a4
     - !<own> ebd037dd-c122-48d3-b597-56638b985142
     - !<own> 1f6791a1-4cd7-4d78-b453-c9f7d236294d
-    - !<own> 9f9bb7a6-4adc-4786-b93c-487a7771435e
   layers: !<Layers/267ee9a7-aff2-4f9d-9a49-f71214747d03>
     userLayers:
       []
@@ -31,6 +30,7 @@
   Components:
     - !<own> 00000000-0000-0065-0000-000000000065
     - !<own> e5553c8a-0b7e-4ef4-92d9-3e1318fb82c1
+    - !<own> d860b929-8046-41d7-a60f-8bb5a57f2542
 - !<Camera/00000000-0000-0065-0000-000000000065>
   PrefabRemaps:
     []
@@ -411,9 +411,9 @@
     Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
     HasSegmentScaleCompensation: false
   Children:
-    - !<own> 7b89913c-e2dc-494a-a57c-e72dfea9a957
+    - !<own> 94b5ace7-a19e-4922-8d10-347ccac6cf37
   Components:
-    - !<own> af8cf01a-2e42-400f-9e81-7bf4ca75ca2f
+    - !<own> e1c8e3a8-3706-4704-851c-19cf8321e63c
 - !<SceneObject/1fbad860-d2cc-4f57-a307-5ac38abfa448>
   PrefabRemaps:
     []
@@ -1574,37 +1574,6 @@
     []
   Components:
     - !<own> c2191ee8-4045-46cf-8a8c-a52f77f9f735
-- !<ScriptComponent/7a67b967-3920-4ac7-8597-69f55b83f206>
-  PrefabRemaps:
-    []
-  Name: ArrowMaker
-  Enabled: true
-  ScriptAsset: !<reference> b8bec011-a867-49ab-bb10-2088fe32a15c
-  ScriptInputsDefault:
-    {}
-  ScriptTypesDefault:
-    {}
-  ScriptInputs:
-    "":
-      {}
-  ScriptTypes:
-    "":
-      {}
-- !<SceneObject/7b89913c-e2dc-494a-a57c-e72dfea9a957>
-  PrefabRemaps:
-    []
-  Name: ArrowMaker
-  Enabled: true
-  Layers: 1
-  LocalTransform: !<TransformEntity>
-    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
-    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
-    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
-    HasSegmentScaleCompensation: false
-  Children:
-    []
-  Components:
-    - !<own> 7a67b967-3920-4ac7-8597-69f55b83f206
 - !<SceneObject/7b9d067f-414a-4620-a6b1-b0824953478c>
   PrefabRemaps:
     []
@@ -1834,6 +1803,21 @@
     - !<own> a4be667c-356e-4cf4-81ef-21e3e55cb1c2
   Components:
     []
+- !<SceneObject/94b5ace7-a19e-4922-8d10-347ccac6cf37>
+  PrefabRemaps:
+    []
+  Name: ArrowMaker
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 97f5ac21-2df1-49ee-a6d3-789af07ecd41
 - !<SceneObject/95e75362-a3b6-4e6c-ae2d-27aaed65c700>
   PrefabRemaps:
     []
@@ -1864,6 +1848,22 @@
     - !<own> 3edde0ea-8cd6-43be-9a1e-265dcd328ee6
   Components:
     []
+- !<ScriptComponent/97f5ac21-2df1-49ee-a6d3-789af07ecd41>
+  PrefabRemaps:
+    []
+  Name: ArrowMaker
+  Enabled: true
+  ScriptAsset: !<reference> 0fb1bd87-8902-4661-b349-ec544ca9aba1
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      {}
+  ScriptTypes:
+    "":
+      {}
 - !<SceneObject/9a14c486-688a-4af4-a99a-084652f3efa1>
   PrefabRemaps:
     []
@@ -1909,21 +1909,6 @@
     - !<own> f0e33766-c981-4f7a-b17b-a50e70c8b6bc
   Components:
     []
-- !<SceneObject/9f9bb7a6-4adc-4786-b93c-487a7771435e>
-  PrefabRemaps:
-    []
-  Name: Object 1
-  Enabled: true
-  Layers: 1
-  LocalTransform: !<TransformEntity>
-    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
-    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
-    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
-    HasSegmentScaleCompensation: false
-  Children:
-    []
-  Components:
-    - !<own> a75b0830-37a7-41fa-b620-9a73693237e3
 - !<SceneObject/a4be667c-356e-4cf4-81ef-21e3e55cb1c2>
   PrefabRemaps:
     []
@@ -1954,30 +1939,6 @@
     []
   Components:
     - !<own> 329940fb-34dd-413d-8f14-ed6fa1f135b5
-- !<ScriptComponent/a75b0830-37a7-41fa-b620-9a73693237e3>
-  PrefabRemaps:
-    []
-  Name: Untitled TypeScript
-  Enabled: true
-  ScriptAsset: !<reference> e9087687-52f8-4923-8f3f-2b23983febc0
-  ScriptInputsDefault:
-    destinationLatitude: true
-    destinationLongitude: true
-    updateIntervalSeconds: true
-    arrivalThresholdMeters: true
-    enableDebugOutput: true
-  ScriptTypesDefault:
-    {}
-  ScriptInputs:
-    "":
-      destinationLatitude: 43.472000
-      destinationLongitude: -80.544899
-      updateIntervalSeconds: !<float> 1.000000
-      arrivalThresholdMeters: !<float> 10.000000
-      enableDebugOutput: true
-  ScriptTypes:
-    "":
-      {}
 - !<ScriptComponent/ab22849e-ac61-44f6-a05a-705b1b8d329f>
   PrefabRemaps:
     []
@@ -2039,28 +2000,6 @@
     - !<own> 9c6bdaf8-6f75-4c15-8f87-51a47efb49e9
   Components:
     []
-- !<ScriptComponent/af8cf01a-2e42-400f-9e81-7bf4ca75ca2f>
-  PrefabRemaps:
-    []
-  Name: ArrowMaker
-  Enabled: true
-  ScriptAsset: !<reference> e8059ba9-686f-408d-970c-55594dde141e
-  ScriptInputsDefault:
-    ballScale: true
-    locationTracker: true
-  ScriptTypesDefault:
-    {}
-  ScriptInputs:
-    "":
-      blueBallPrefab: !<reference.ObjectPrefab> a6ca66b5-dd42-42e6-8542-166008d4580f
-      redBallPrefab: !<reference.ObjectPrefab> af67d8fe-8295-46fc-9f0e-ea49df41bb4f
-      cameraObject: !<reference.SceneObject> 00000000-0000-0065-0000-000000000064
-      ballScale: !<float> 1.000000
-      serverUrl: "http://localhost:8080"
-      locationTracker: !<reference.DeviceLocationTrackingComponent> 00000000-0000-0000-0000-000000000000
-  ScriptTypes:
-    "":
-      {}
 - !<SceneObject/b1f8254d-7ff0-4786-bdb0-5811371eac87>
   PrefabRemaps:
     []
@@ -2552,6 +2491,12 @@
     - !<own> 6bf04e34-6299-4f27-8f48-259345a32666
   Components:
     []
+- !<DeviceLocationTrackingComponent/d860b929-8046-41d7-a60f-8bb5a57f2542>
+  PrefabRemaps:
+    []
+  Name: Device Location Tracking
+  Enabled: true
+  Location: !<reference> 3c4f4eaa-4290-45b4-aef6-0887d5942e1d
 - !<SceneObject/d8ce2d41-6bdf-4d37-beb2-a693b7e1d24c>
   PrefabRemaps:
     []
@@ -2727,6 +2672,27 @@
     - !<own> 5a2ca1a2-f292-4079-aebb-f491bb9f5bf5
   Components:
     []
+- !<ScriptComponent/e1c8e3a8-3706-4704-851c-19cf8321e63c>
+  PrefabRemaps:
+    []
+  Name: Untitled JavaScript 2
+  Enabled: true
+  ScriptAsset: !<reference> c861fcc0-293f-48e8-b7d6-2263931731d6
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      blueBallPrefab: !<reference.ObjectPrefab> a6ca66b5-dd42-42e6-8542-166008d4580f
+      redBallPrefab: !<reference.ObjectPrefab> af67d8fe-8295-46fc-9f0e-ea49df41bb4f
+      cameraObject: !<reference.SceneObject> 00000000-0000-0065-0000-000000000064
+      ballScale: !<float> 5.000000
+      serverUrl: "http://localhost:8080"
+      locationTracker: !<reference.DeviceLocationTrackingComponent> d860b929-8046-41d7-a60f-8bb5a57f2542
+  ScriptTypes:
+    "":
+      {}
 - !<DeviceTracking/e5553c8a-0b7e-4ef4-92d9-3e1318fb82c1>
   PrefabRemaps:
     []
@@ -2775,7 +2741,7 @@
     - c2191ee8-4045-46cf-8a8c-a52f77f9f735: a3448389-9978-4f17-a7fa-4ad0ffb18f50
     - ebd037dd-c122-48d3-b597-56638b985142: ced879b3-89c1-49a5-aa07-708f446d1a1e
   Name: NavigationArrow
-  Enabled: true
+  Enabled: false
   Layers: 1
   LocalTransform: !<TransformEntity>
     Position: {x: 0.000000, y: -30.000000, z: 0.000000}
